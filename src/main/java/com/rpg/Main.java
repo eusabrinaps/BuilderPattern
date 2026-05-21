@@ -7,7 +7,6 @@ import com.rpg.modelo.Raca;
 public class Main {
 
     public static void main(String[] args) {
-
         Personagem guerreiro = new Personagem.Builder("Thorin Pedraferro", ClassePersonagem.GUERREIRO, Raca.ANAO)
                 .nivel(5)
                 .forca(16)
@@ -21,7 +20,8 @@ public class Main {
                 .habilidade("Ataque Giratório")
                 .habilidade("Brado de Guerra")
                 .habilidade("Resistência Anã")
-                .historia("Filho de mineiros, Thorin jurou proteger seu clã após um ataque de trolls devastar sua aldeia.")
+                .historia("Filho de mineiros, Thorin jurou proteger seu clã após um ataque" +
+                        " de trolls devastar sua aldeia.")
                 .build();
 
         Personagem mago = new Personagem.Builder("Elariel", ClassePersonagem.MAGO, Raca.ELFO)

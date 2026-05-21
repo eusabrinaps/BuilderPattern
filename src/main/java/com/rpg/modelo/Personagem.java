@@ -106,16 +106,16 @@ public class Personagem {
         private final ClassePersonagem classe;
         private final Raca raca;
 
-        private int nivel        = 1;
-        private int forca        = 10;
-        private int destreza     = 10;
+        private int nivel = 1;
+        private int forca = 10;
+        private int destreza = 10;
         private int constituicao = 10;
         private int inteligencia = 10;
-        private int sabedoria    = 10;
-        private int carisma      = 10;
+        private int sabedoria = 10;
+        private int carisma = 10;
         private int pontosDeVida = 0;
-        private String arma      = null;
-        private String armadura  = null;
+        private String arma = null;
+        private String armadura = null;
         private final List<String> habilidades = new ArrayList<>();
         private String historia  = null;
 

@@ -1,0 +1,20 @@
+package com.rpg.modelo;
+
+import java.util.List;
+
+public interface PersonagemBuilder {
+    PersonagemBuilder nome (String nome);
+    PersonagemBuilder nivel (int nivel);
+    PersonagemBuilder forca (int forca);
+    PersonagemBuilder destreza (int destreza);
+    PersonagemBuilder constituicao (int constituicao);
+    PersonagemBuilder inteligencia (int inteligencia);
+    PersonagemBuilder sabedoria (int sabedoria);
+    PersonagemBuilder carisma (int carisma);
+    PersonagemBuilder pontosDeVida (int pontosDeVida);
+    PersonagemBuilder arma (String arma);
+    PersonagemBuilder armadura (String armadura);
+    PersonagemBuilder habilidade (String habilidade);
+    PersonagemBuilder historia (String historia);
+    Personagem build ();
+}
