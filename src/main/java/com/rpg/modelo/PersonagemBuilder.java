@@ -1,9 +1,8 @@
 package com.rpg.modelo;
 
-import java.util.List;
-
 public interface PersonagemBuilder {
     PersonagemBuilder nome (String nome);
+    PersonagemBuilder raca (Raca raca);
     PersonagemBuilder nivel (int nivel);
     PersonagemBuilder forca (int forca);
     PersonagemBuilder destreza (int destreza);
