@@ -23,28 +23,45 @@ public class Personagem {
     private final List<String> habilidades;
     private final String historia;
 
-    private Personagem(Builder builder) {
-        this.nome = builder.nome;
-        this.classe = builder.classe;
-        this.raca = builder.raca;
-        this.nivel = builder.nivel;
-        this.forca = builder.forca + raca.getBonusForca();
-        this.destreza = builder.destreza + raca.getBonusDestreza();
-        this.constituicao = builder.constituicao + raca.getBonusConstituicao();
-        this.inteligencia = builder.inteligencia;
-        this.sabedoria = builder.sabedoria;
-        this.carisma = builder.carisma;
-        this.pontosDeVida = builder.pontosDeVida > 0 ? builder.pontosDeVida : calcularPontosDeVida();
-        this.arma = builder.arma;
-        this.armadura = builder.armadura;
-        this.habilidades = Collections.unmodifiableList(builder.habilidades);
-        this.historia = builder.historia;
+    Personagem(String nome, ClassePersonagem classe, Raca raca, int nivel, int forca, int destreza,
+                      int constituicao, int inteligencia, int sabedoria, int carisma, int pontosDeVida,
+                      String arma, String armadura, List<String> habilidades, String historia) {
+        this.nome = nome;
+        this.classe = classe;
+        this.raca = raca;
+        this.nivel = nivel;
+        this.forca = forca + raca.getBonusForca();
+        this.destreza = destreza + raca.getBonusDestreza();
+        this.constituicao = constituicao + raca.getBonusConstituicao();
+        this.inteligencia = inteligencia;
+        this.sabedoria = sabedoria;
+        this.carisma = carisma;
+        this.pontosDeVida = pontosDeVida > 0 ? pontosDeVida: calcularPontosDeVida();
+        this.arma = arma;
+        this.armadura = armadura;
+        this.habilidades = List.copyOf(habilidades);
+        this.historia = historia;
     }
-
     private int calcularPontosDeVida() {
         return (constituicao * nivel) + (nivel * 8);
     }
-
+    //    private Personagem(Builder builder) {
+//        this.nome = builder.nome;
+//        this.classe = builder.classe;
+//        this.raca = builder.raca;
+//        this.nivel = builder.nivel;
+//        this.forca = builder.forca + raca.getBonusForca();
+//        this.destreza = builder.destreza + raca.getBonusDestreza();
+//        this.constituicao = builder.constituicao + raca.getBonusConstituicao();
+//        this.inteligencia = builder.inteligencia;
+//        this.sabedoria = builder.sabedoria;
+//        this.carisma = builder.carisma;
+//        this.pontosDeVida = builder.pontosDeVida > 0 ? builder.pontosDeVida : calcularPontosDeVida();
+//        this.arma = builder.arma;
+//        this.armadura = builder.armadura;
+//        this.habilidades = Collections.unmodifiableList(builder.habilidades);
+//        this.historia = builder.historia;
+//    }
     public String getNome() { return nome; }
     public ClassePersonagem getClasse() { return classe; }
     public Raca getRaca() { return raca; }
@@ -100,99 +117,99 @@ public class Personagem {
         return sb.toString();
     }
 
-    public static class Builder {
-
-        private final String nome;
-        private final ClassePersonagem classe;
-        private final Raca raca;
-
-        private int nivel = 1;
-        private int forca = 10;
-        private int destreza = 10;
-        private int constituicao = 10;
-        private int inteligencia = 10;
-        private int sabedoria = 10;
-        private int carisma = 10;
-        private int pontosDeVida = 0;
-        private String arma = null;
-        private String armadura = null;
-        private final List<String> habilidades = new ArrayList<>();
-        private String historia  = null;
-
-        public Builder(String nome, ClassePersonagem classe, Raca raca) {
-            if (nome == null || nome.isBlank()) {
-                throw new IllegalArgumentException("O personagem precisa de um nome.");
-            }
-            this.nome   = nome;
-            this.classe = classe;
-            this.raca   = raca;
-        }
-
-        public Builder nivel(int nivel) {
-            if (nivel < 1 || nivel > 20) {
-                throw new IllegalArgumentException("Nível deve estar entre 1 e 20.");
-            }
-            this.nivel = nivel;
-            return this;
-        }
-
-        public Builder forca(int forca) {
-            this.forca = forca;
-            return this;
-        }
-
-        public Builder destreza(int destreza) {
-            this.destreza = destreza;
-            return this;
-        }
-
-        public Builder constituicao(int constituicao) {
-            this.constituicao = constituicao;
-            return this;
-        }
-
-        public Builder inteligencia(int inteligencia) {
-            this.inteligencia = inteligencia;
-            return this;
-        }
-
-        public Builder sabedoria(int sabedoria) {
-            this.sabedoria = sabedoria;
-            return this;
-        }
-
-        public Builder carisma(int carisma) {
-            this.carisma = carisma;
-            return this;
-        }
-
-        public Builder pontosDeVida(int pontosDeVida) {
-            this.pontosDeVida = pontosDeVida;
-            return this;
-        }
-
-        public Builder arma(String arma) {
-            this.arma = arma;
-            return this;
-        }
-
-        public Builder armadura(String armadura) {
-            this.armadura = armadura;
-            return this;
-        }
-
-        public Builder habilidade(String habilidade) {
-            this.habilidades.add(habilidade);
-            return this;
-        }
-
-        public Builder historia(String historia) {
-            this.historia = historia;
-            return this;
-        }
-
-        public Personagem build() {
-            return new Personagem(this);
-        }
-    }
+//    public static class Builder {
+//
+//        private final String nome;
+//        private final ClassePersonagem classe;
+//        private final Raca raca;
+//
+//        private int nivel = 1;
+//        private int forca = 10;
+//        private int destreza = 10;
+//        private int constituicao = 10;
+//        private int inteligencia = 10;
+//        private int sabedoria = 10;
+//        private int carisma = 10;
+//        private int pontosDeVida = 0;
+//        private String arma = null;
+//        private String armadura = null;
+//        private final List<String> habilidades = new ArrayList<>();
+//        private String historia  = null;
+//
+//        public Builder(String nome, ClassePersonagem classe, Raca raca) {
+//            if (nome == null || nome.isBlank()) {
+//                throw new IllegalArgumentException("O personagem precisa de um nome.");
+//            }
+//            this.nome   = nome;
+//            this.classe = classe;
+//            this.raca   = raca;
+//        }
+//
+//        public Builder nivel(int nivel) {
+//            if (nivel < 1 || nivel > 20) {
+//                throw new IllegalArgumentException("Nível deve estar entre 1 e 20.");
+//            }
+//            this.nivel = nivel;
+//            return this;
+//        }
+//
+//        public Builder forca(int forca) {
+//            this.forca = forca;
+//            return this;
+//        }
+//
+//        public Builder destreza(int destreza) {
+//            this.destreza = destreza;
+//            return this;
+//        }
+//
+//        public Builder constituicao(int constituicao) {
+//            this.constituicao = constituicao;
+//            return this;
+//        }
+//
+//        public Builder inteligencia(int inteligencia) {
+//            this.inteligencia = inteligencia;
+//            return this;
+//        }
+//
+//        public Builder sabedoria(int sabedoria) {
+//            this.sabedoria = sabedoria;
+//            return this;
+//        }
+//
+//        public Builder carisma(int carisma) {
+//            this.carisma = carisma;
+//            return this;
+//        }
+//
+//        public Builder pontosDeVida(int pontosDeVida) {
+//            this.pontosDeVida = pontosDeVida;
+//            return this;
+//        }
+//
+//        public Builder arma(String arma) {
+//            this.arma = arma;
+//            return this;
+//        }
+//
+//        public Builder armadura(String armadura) {
+//            this.armadura = armadura;
+//            return this;
+//        }
+//
+//        public Builder habilidade(String habilidade) {
+//            this.habilidades.add(habilidade);
+//            return this;
+//        }
+//
+//        public Builder historia(String historia) {
+//            this.historia = historia;
+//            return this;
+//        }
+//
+//        public Personagem build() {
+//            return new Personagem(this);
+//        }
+//    }
 }
