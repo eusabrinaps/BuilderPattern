@@ -1,8 +1,6 @@
 package com.rpg.modelo;
 
 public interface PersonagemBuilder {
-    PersonagemBuilder nome (String nome);
-    PersonagemBuilder raca (Raca raca);
     PersonagemBuilder nivel (int nivel);
     PersonagemBuilder forca (int forca);
     PersonagemBuilder destreza (int destreza);
@@ -15,5 +13,4 @@ public interface PersonagemBuilder {
     PersonagemBuilder armadura (String armadura);
     PersonagemBuilder habilidade (String habilidade);
     PersonagemBuilder historia (String historia);
-    Personagem build ();
 }
