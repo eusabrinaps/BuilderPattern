@@ -1,7 +1,5 @@
 package com.rpg.modelo;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Personagem {

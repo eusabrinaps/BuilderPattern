@@ -3,9 +3,9 @@ package com.rpg.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MagoBuilder implements PersonagemBuilder{
-    private String nome;
-    private Raca raca;
+public class MagoBuilder implements PersonagemBuilder {
+    private final String nome;
+    private final Raca raca;
     private int nivel = 1;
     private int forca = 8;
     private int destreza = 12;
@@ -16,19 +16,12 @@ public class MagoBuilder implements PersonagemBuilder{
     private int pontosDeVida = 0;
     private String arma;
     private String armadura;
-    private final List<String> habilidades = new ArrayList<>();
+    private List<String> habilidades = new ArrayList<>();
     private String historia;
 
-    @Override
-    public PersonagemBuilder nome(String nome) {
+    public MagoBuilder(String nome, Raca raca) {
         this.nome = nome;
-        return this;
-    }
-
-    @Override
-    public PersonagemBuilder raca(Raca raca) {
         this.raca = raca;
-        return this;
     }
 
     @Override
@@ -103,9 +96,25 @@ public class MagoBuilder implements PersonagemBuilder{
         return this;
     }
 
-    @Override
     public Personagem build() {
-        return new Personagem(nome, ClassePersonagem.MAGO, raca, nivel, forca, destreza, constituicao,
-                inteligencia, sabedoria, carisma, pontosDeVida, arma, armadura,habilidades, historia);
+        Personagem personagem = new Personagem(nome, ClassePersonagem.MAGO, raca, nivel, forca, destreza,
+                constituicao, inteligencia, sabedoria, carisma, pontosDeVida, arma, armadura, habilidades, historia);
+        reset();
+        return personagem;
+    }
+
+    private void reset() {
+        nivel = 1;
+        forca = 8;
+        destreza = 12;
+        constituicao = 10;
+        inteligencia = 16;
+        sabedoria = 13;
+        carisma = 10;
+        pontosDeVida = 0;
+        arma = null;
+        armadura = null;
+        habilidades = new ArrayList<>();
+        historia = null;
     }
 }
